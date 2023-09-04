@@ -72,6 +72,7 @@ export class AccionDeCumplimientoComponent {
       normaIncumplida: ['', Validators.required],
       autoridadIncumple: ['', Validators.required],
       pretension: ['', Validators.required],
+      fecha_renuencia: ['', Validators.required],
       ciudadDemandado: ['', Validators.required],
       direccionDemandado: ['', Validators.required],
       telefonoDemandado: ['', Validators.required],
@@ -81,6 +82,7 @@ export class AccionDeCumplimientoComponent {
       telefonoDemandante: ['', Validators.required],
       correoDemandante: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       hechos: this.fb.array( [ this.fb.group({contenido: ''}) ] ),
+
     });
   }
 

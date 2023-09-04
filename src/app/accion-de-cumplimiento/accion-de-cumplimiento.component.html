@@ -1,12 +1,10 @@
 <div class="container mt-5">
   <h3>Acción de cumplimiento</h3>
   <p>
-    Una acción de cumplimiento se refiere a un proceso legal mediante el cual se
-    busca asegurar que una persona, entidad o empresa cumpla con ciertas
-    obligaciones, normativas o requerimientos establecidos por leyes,
-    regulaciones, contratos u otras disposiciones legales. Estas acciones son
-    utilizadas para garantizar que se lleven a cabo ciertos comportamientos o
-    acciones específicas que están establecidos en una ley o acuerdo.
+    La Acción de cumplimiento constituye el instrumento adecuado para demandar
+    de las autoridades o de los particulares que ejercen funciones públicas, el
+    cumplimiento de las normas con fuerza material de Ley y de los actos
+    administrativos.
   </p>
 
   <form [formGroup]="AccionDeCumplimiento" (ngSubmit)="onSubmit()">
@@ -26,8 +24,7 @@
           ></label
         >
         <div id="destinatarioHelpBlock" class="form-text">
-          Indica en los siguientes los campos la entidad judicial a la que se
-          dirige.
+          Indica en los siguientes campos la autoridad judicial ante quien se interpone la acción.
         </div>
       </div>
     </div>
@@ -183,7 +180,7 @@
           class="form-control"
           formControlName="direccionJuez"
           id="direccionJuez"
-          placeholder="Dirección del juez administrativo que recibe el acta de cumplimiento"
+          placeholder="Dirección del juez administrativo ante quien se presenta la acción de cumplimiento."
           [class.is-invalid]="
             AccionDeCumplimiento.get('direccionJuez')?.invalid &&
             AccionDeCumplimiento.get('direccionJuez')?.touched
@@ -271,12 +268,12 @@
         <!-- Label: Datos de la persona que hace esta accion de cumplimiento -->
         <label class="text-primary" for="destinatario"
           ><strong
-            >Datos de la persona que hace esta acción de cumplimiento
+            >Datos de la persona que presenta la acción de cumplimiento.
           </strong></label
         >
         <div id="destinatarioHelpBlock" class="form-text">
-          Indica en los siguientes campos los datos de la persona que hace esta
-          acción de cumplimiento
+          Indica en los siguientes campos los datos de la persona que presenta esta
+          acción de cumplimiento.
         </div>
       </div>
     </div>
@@ -294,7 +291,7 @@
           class="form-control"
           formControlName="nombreDemandante"
           id="nombreDemandante"
-          placeholder="Nombre de quien hace esta acción de cumplimiento"
+          placeholder="Nombre de la persona que presenta la acción de cumplimiento"
           [class.is-invalid]="
             AccionDeCumplimiento.get('nombreDemandante')?.invalid &&
             AccionDeCumplimiento.get('nombreDemandante')?.touched
@@ -432,11 +429,10 @@
       <div class="form-group">
         <!-- Label: Datos de las acciones incumplidas -->
         <label class="text-primary" for="destinatario"
-          ><strong>Datos de las acciones incumplidas</strong></label
+          ><strong>Información de las normas incumplidas</strong></label
         >
         <div id="destinatarioHelpBlock" class="form-text">
-          Indica en los siguientes campos la descripcion de las acciones
-          incumplidas
+          Indica en los siguientes campos la información de las normas incumplidas.
         </div>
       </div>
     </div>
@@ -452,7 +448,7 @@
           class="form-control"
           formControlName="normaIncumplida"
           id="normaIncumplida"
-          placeholder="Especifique los artículos de la ley o el acto administrativo que se demanda como incumplido. Ejemplo: Artículo 8.º de la Ley 393 del 29 de julio de 1997"
+          placeholder="Describa la ley o acto administrativo con los artículos incumplidos que se demandan en la acción de cumplimiento. Ejemplo: Artículo 8.º de la Ley 393 del 29 de julio de 1997."
           required
           [class.is-invalid]="
             AccionDeCumplimiento.get('normaIncumplida')?.invalid &&
@@ -708,6 +704,59 @@
         class="text-danger"
       >
         La pretension es obligatoria
+      </small>
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="fecha_renuencia"
+        ><strong>Fecha de la constitución en renuencia</strong> -</label
+      ><label class="text-primary"><strong>(requerido)</strong></label>
+      <div
+        id="destinatarioHelpBlock"
+        class="form-text"
+        style="font-size: 16px; color: black"
+      >
+        Especifique la fecha en la que el demandado fue declarado en renuencia
+      </div>
+      <div class="input-group">
+        <input
+          class="form-control"
+          type="date"
+          formControlName="fecha_renuencia"
+          name="fecha_renuencia"
+          id="fecha_renuencia"
+          required
+          (input)="onDateChange($event)"
+          [class.is-invalid]="
+            AccionDeCumplimiento.get('fecha_renuencia')?.invalid &&
+            AccionDeCumplimiento.get('fecha_renuencia')?.touched
+          "
+        />
+        <!-- Icono de alerta y mensaje de ayuda -->
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Especifique la fecha en la que el demandado fue declarado en renuencia"
+          >
+            <i
+              class="fas fa-exclamation-circle text-white"
+              style="width: 25px; height: 25px"
+            ></i>
+          </button>
+        </div>
+      </div>
+      <small
+        *ngIf="
+          AccionDeCumplimiento.get('fecha_renuencia')?.invalid &&
+          AccionDeCumplimiento.get('fecha_renuencia')?.touched
+        "
+        class="text-danger"
+      >
+        La fecha es obligatoria
       </small>
     </div>
 
